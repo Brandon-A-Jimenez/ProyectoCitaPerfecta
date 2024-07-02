@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class ReservacionService {
 private baseURL = 'htpp://localhost:5000';
   constructor(private http: HttpClient) { }
-  makeReservation(reservation: any): Observable<any>{
-    return this.http.post('${this.baseUrl}/reserve',reservation);
+  makeReservation(reservation: any, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.baseURL}/reserve`, reservation, { headers });
   }
 }

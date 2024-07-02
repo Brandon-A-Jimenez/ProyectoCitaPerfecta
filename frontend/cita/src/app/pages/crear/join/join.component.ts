@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../../../services/rest.service';
 
 @Component({
   selector: 'app-join',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinComponent implements OnInit {
 
-  constructor() { }
+  user = {email: '',password:''};
+  constructor(private restService: RestService) { }
 
-  ngOnInit(): void {
+  register(): void {
+    this.restService.registro(this.user).subscribe(response => {
+      console.log('User registered successfully', response);
+    }, error => {
+      console.error('Error registering user', error);
+    });
   }
-
+  ngOnInit(): void {
+  }  
 }

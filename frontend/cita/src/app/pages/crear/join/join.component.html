@@ -1,14 +1,18 @@
 <app-nav></app-nav>
-<main>
-    <section class="--cuenta">
-        <div class="container">
-            <h1>Crear Cuenta</h1>
+<div class="logn-container">
+    <form (ngSubmit)="register()">
+        <h2>Join</h2>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" name="email" [(ngModel)]="user.email" required>
         </div>
-    </section>
-    <fieldset>
-        <form action="">
-            
-        </form>
-    </fieldset>
-</main>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" name="password" [(ngModel)]="user.password" type="password" required>
+        </div>
+        <div class="--send">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
 <app-texto></app-texto>

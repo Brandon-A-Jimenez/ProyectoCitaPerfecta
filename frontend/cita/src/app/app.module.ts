@@ -20,8 +20,20 @@ import { ReservacionService } from './services/reservacion.service';
 
 @NgModule({
   //declarar componentes
-  declarations: [AppComponent,TextoComponent,ContenidoComponent,NavComponent,InicioComponent,ReservarComponent,SobreComponent, MainComponent, FormulariosComponent, LoginComponent, JoinComponent],
+  declarations: [
+    AppComponent,
+    TextoComponent,
+    ContenidoComponent,
+    NavComponent,
+    InicioComponent,
+    ReservarComponent,
+    SobreComponent, 
+    MainComponent, 
+    FormulariosComponent, 
+    LoginComponent, 
+    JoinComponent],
   imports: [ //modulos
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
