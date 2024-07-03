@@ -7,15 +7,17 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__) #inicialización
-app.config['MONGO_URI']='your_jwt_secret_key'
+app.config['MONGO_URI']='mongodb://localhost:27017/basedatos'
+app.config['JWT_SECRET_KEy']='1234567890'
 CORS(app)
 jwt = JWTManager(app)
+mongo = PyMongo(app)
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client.mydatabase
 
 #enlaces
-@app.route('inicio/login',methods=['POST'])
+@app.route('/inicio/login',methods=['POST'])
 def login():
     data = request.json
     user = db.users.find_one({'email': data['email']})
@@ -26,7 +28,7 @@ def login():
     access_token = create_access_token(identity=data['email'])
     return jsonify({'access_token': access_token}), 200
 
-@app.route('crear/join',methods=['POST'])
+@app.route('/crear/join',methods=['POST'])
 def registro():
     data = request.json
     if db.users.find_one({'email': data['email']}):
@@ -66,6 +68,12 @@ def updateUsuario():
 @app.route('/delete/<id>',methods=['DELETE'])
 def deleteUsuario():
     pass
+
+@app.route('/facturas', methods=['POST'])
+def create_factura():
+    data = request.json
+    mongo.db.facturas.insert_one(data)
+    return jsonify({"message": "Factura generated successfully"}), 201
 
 if __name__ == "__main__":
     app.run(debug=True,port=5000)

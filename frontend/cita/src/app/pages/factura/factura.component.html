@@ -1,0 +1,40 @@
+<div class="factura-container">
+    <form (ngSubmit)="generateFactura()">
+        <h2>Generate Factura</h2>
+  
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" id="id" [(ngModel)]="factura.id" name="id" required>
+        </div>
+        <div class="form-group">
+            <label for="ruc">RUC:</label>
+            <input type="number" id="ruc" [(ngModel)]="factura.ruc" name="ruc" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre_comercial">Nombre Comercial:</label>
+            <input type="text" id="nombre_comercial" [(ngModel)]="factura.nombre_comercial" name="nombre_comercial" required>
+        </div>
+        <div class="form-group">
+            <label for="razon_social">Razón Social:</label>
+            <input type="text" id="razon_social" [(ngModel)]="factura.razon_social" name="razon_social" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" [(ngModel)]="factura.direccion" name="direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" [(ngModel)]="factura.telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre_contacto">Nombre Contacto:</label>
+            <input type="text" id="nombre_contacto" [(ngModel)]="factura.nombre_contacto" name="nombre_contacto" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_establecimiento">Tipo de Establecimiento:</label>
+            <input type="text" id="tipo_establecimiento" [(ngModel)]="factura.tipo_establecimiento" name="tipo_establecimiento" required>
+        </div>
+        <button type="submit">Generate Factura</button>
+    </form>
+</div>
+  

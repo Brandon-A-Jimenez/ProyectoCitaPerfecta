@@ -1,23 +1,36 @@
 <app-nav></app-nav>
-<form (ngSubmit)="reserve()">
-  <label>
-    <input type="checkbox" [(ngModel)]="reservation.restaurant" (change)="onServiceChange()"> Restaurant
-  </label>
-  <label>
-    <input type="checkbox" [(ngModel)]="reservation.hotel" (change)="onServiceChange()"> Hotel
-  </label>
-  <label>
-    <input type="checkbox" [(ngModel)]="reservation.transport" (change)="onServiceChange()"> Transport
-  </label>
+<div class="reservation-container">
+  <form (submit)="reserve()">
+    <h2>Make a Reservation</h2>
 
-  <label for="location">Location:</label>
-  <input id="location" name="location" [(ngModel)]="reservation.location" required>
+    <div class="form-group">
+      <label for="restaurant">Restaurant:</label>
+      <input type="checkbox" id="restaurant" [(ngModel)]="reservation.restaurant" (change)="onServiceChange()" name="restaurant">
+    </div>
+    <div class="form-group">
+      <label for="hotel">Hotel:</label>
+      <input type="checkbox" id="hotel" [(ngModel)]="reservation.hotel" (change)="onServiceChange()" name="hotel">
+    </div>
+    <div class="form-group">
+      <label for="transport">Transport:</label>
+      <input type="checkbox" id="transport" [(ngModel)]="reservation.transport" (change)="onServiceChange()" name="transport">
+    </div>
+    
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <select id="location" [(ngModel)]="reservation.location" name="location">
+        <option *ngFor="let loc of locations" [value]="loc.name">{{ loc.name }}</option>
+      </select>
+    </div>
+    
+    <div class="image-container" *ngIf="selectedImage">
+      <img [src]="selectedImage" alt="Selected location">
+    </div>
 
-  <button type="submit">Reserve</button>
-</form>
-
-<div *ngIf="selectedImage">
-  <img [src]="selectedImage" alt="Selected Location">
+    <div class="--send">
+      <button type="submit">Reserve</button>
+    </div>
+  </form>
 </div>
 
 <app-texto></app-texto>

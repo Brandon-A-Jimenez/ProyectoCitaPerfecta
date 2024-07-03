@@ -17,6 +17,7 @@ import { LoginComponent } from './pages/inicio/login/login.component';
 import { JoinComponent } from './pages/crear/join/join.component';
 import { RestService } from './services/rest.service';
 import { ReservacionService } from './services/reservacion.service';
+import { FacturaComponent } from './pages/factura/factura.component';
 
 @NgModule({
   //declarar componentes
@@ -31,7 +32,7 @@ import { ReservacionService } from './services/reservacion.service';
     MainComponent, 
     FormulariosComponent, 
     LoginComponent, 
-    JoinComponent],
+    JoinComponent, FacturaComponent],
   imports: [ //modulos
     FormsModule,
     BrowserModule,
